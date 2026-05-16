@@ -23,7 +23,7 @@ const DashboardCard = () => {
                 {/* Appointments Today Card */}
                 <div className='bg-white rounded-lg p-5 shadow-md flex justify-between items-center'>
                     <div>
-                        <div className='text-gray-600 text-sm'>Appiontments Today</div>
+                        <div className='text-gray-600 text-sm'>Appointments Today</div>
                         <div className='text-2xl text-gray-900 mt-1'>48</div>
                         <div className='text-gray-500 text-xs mt-2'>12 pending</div>
                     </div>

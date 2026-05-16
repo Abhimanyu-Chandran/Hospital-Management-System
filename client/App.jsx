@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import SideBar from '/client/navigation/SideBar.jsx';
+import SideBar from './navigation/SideBar.jsx';
 import Dashboard from './components/Dashboard/Dashboard.jsx';
 import Patients from './components/Patients/Patients.jsx';
 import Appointments from './components/Appointments/Appointments.jsx';
