@@ -7,8 +7,6 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     try {
         const appointments = await Appointment.find()
-            .populate('patientId', 'firstName lastName email')
-            .populate('doctorId', 'firstName lastName specialization')
             .sort({ date: -1, time: 1 });
         res.json(appointments);
     } catch (error) {
@@ -19,9 +17,7 @@ router.get('/', async (req, res) => {
 // GET single appointment
 router.get('/:id', async (req, res) => {
     try {
-        const appointment = await Appointment.findById(req.params.id)
-            .populate('patientId', 'firstName lastName email')
-            .populate('doctorId', 'firstName lastName specialization');
+        const appointment = await Appointment.findById(req.params.id);
         if (!appointment) {
             return res.status(404).json({ message: 'Appointment not found' });
         }
