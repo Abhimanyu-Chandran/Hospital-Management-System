@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+import { Schema, model, Types } from 'mongoose';
 
-const medicalRecordSchema = new mongoose.Schema({
-    patientId: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient', required: true },
-    doctorId: { type: mongoose.Schema.Types.ObjectId, ref: 'Doctor', required: true },
+const medicalRecordSchema = new Schema({
+    patientId: { type: Types.ObjectId, ref: 'Patient', required: true },
+    doctorId: { type: Types.ObjectId, ref: 'Doctor', required: true },
     date: { type: Date, required: true },
     diagnosis: { type: String, required: true },
     treatment: { type: String, required: true },
@@ -17,4 +17,4 @@ const medicalRecordSchema = new mongoose.Schema({
     updatedAt: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('MedicalRecord', medicalRecordSchema);
+export default model('MedicalRecord', medicalRecordSchema);

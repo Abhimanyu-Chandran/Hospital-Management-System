@@ -1,18 +1,18 @@
-const mongoose = require('mongoose');
+import { Schema, model } from 'mongoose';
 
-const patientSchema = new mongoose.Schema({
+const patientSchema = new Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   phone: { type: String, required: true },
-  dateOfBirth: { type: Date, required: true },
-  gender: { type: String, enum: ['Male', 'Female', 'Other'], required: true },
-  address: { type: String, required: true },
-  bloodGroup: { type: String, required: true },
-  emergencyContact: { type: String, required: true },
-  medicalHistory: [{ type: String }],
+  age: { type: Number, required: true },
+  gender: { type: String, enum: ['Male', 'Female', 'Other'], required: false },
+  address: { type: String, required: false },
+  bloodGroup: { type: String, required: false },
+  emergencyContact: { type: String, required: false },
+  lastVisit: { type: Date, required: true },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('Patient', patientSchema);
+export default model('Patient', patientSchema);

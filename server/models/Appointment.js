@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+import { Schema, model, Types } from 'mongoose';
 
-const appointmentSchema = new mongoose.Schema({
-    patientId: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient', required: true },
-    doctorId: { type: mongoose.Schema.Types.ObjectId, ref: 'Doctor', required: true },
+const appointmentSchema = new Schema({
+    patientId: { type: Types.ObjectId, ref: 'Patient', required: true },
+    doctorId: { type: Types.ObjectId, ref: 'Doctor', required: true },
     date: { type: Date, required: true },
     time: { type: String, required: true },
     status: { type: String, enum: ['Scheduled', 'Completed', 'Cancelled'], default: 'Scheduled' },
@@ -12,4 +12,4 @@ const appointmentSchema = new mongoose.Schema({
     updatedAt: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('Appointment', appointmentSchema);
+export default model('Appointment', appointmentSchema);

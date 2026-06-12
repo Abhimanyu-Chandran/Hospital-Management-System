@@ -1,22 +1,29 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const connectDB = require('./config/db');
+import dotenv from 'dotenv';
+import express, { json } from 'express';
+import cors from 'cors';
+import connectDB from './config/db.js';
+import patientsRouter from './routes/patients.js';
+import doctorsRouter from './routes/doctors.js';
+import appointmentsRouter from './routes/appointments.js';
+import medicalRecordsRouter from './routes/medicalRecords.js';
+
+dotenv.config();
 
 //Connect to MongoDB
 connectDB();
 
+//Express setup
 const app = express();
 
 //Middleware
 app.use(cors());
-app.use(express.json());
+app.use(json());
 
 //Routes
-app.use('/api/patients', require('./routes/patients'));
-app.use('./api/doctors', require('./routes/doctors'));
-app.use('./api/appointments', require('./routes/appointments'));
-app.use('./api/medical-records', require('./routes/medicalRecords'));
+app.use('/api/patients', patientsRouter);
+app.use('/api/doctors', doctorsRouter);
+app.use('/api/appointments', appointmentsRouter);
+app.use('/api/medical-records', medicalRecordsRouter);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
