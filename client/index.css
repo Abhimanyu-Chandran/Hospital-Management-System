@@ -3,7 +3,7 @@
 :root {
   --text: #000000;
   --text-h: #08060d;
-  --bg: #fff;
+  --bg: rgb(245,250,253);
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
   --accent: #aa3bff;

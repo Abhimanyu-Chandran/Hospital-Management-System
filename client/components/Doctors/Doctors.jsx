@@ -288,7 +288,7 @@ const Doctors = () => {
         <button
           onClick={handleAddDoctor}
           disabled={loading}
-          className='shadow-md rounded-md border-2 border-blue-500 px-4 py-2 m-2 flex text-blue-500 hover:bg-blue-500 hover:text-white transition-all disabled:opacity-50 font-medium cursor-pointer'
+          className='shadow-md rounded-md border-2 border-blue-500 px-4 py-2 m-2 flex bg-linear-to-t from-sky-500 to-indigo-500 text-white transition-all disabled:opacity-50 font-medium cursor-pointer'
         >
           <Plus className='w-4 h-6 mr-1' />
           Add Doctor
@@ -419,7 +419,7 @@ const Doctors = () => {
               <button
                 onClick={handleCloseModal}
                 disabled={submitting}
-                className='text-gray-400 hover:text-gray-600'
+                className='text-gray-400 hover:text-gray-600 cursor-pointer'
                 type='button'
               >
                 <X className='w-5 h-5' />

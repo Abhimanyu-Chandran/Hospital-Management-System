@@ -13,7 +13,7 @@ const patientData = [
 const PatientsGrowth = () => {
     return (
         <div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                 <h3 className="text-xl mb-4">Patient Growth</h3>
                 <ResponsiveContainer width="100%" height={300}>
                     <LineChart data={patientData}>

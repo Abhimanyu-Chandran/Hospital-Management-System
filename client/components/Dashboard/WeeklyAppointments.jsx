@@ -14,7 +14,7 @@ const appointmentData = [
 const WeeklyAppointments = () => {
     return (
         <section>
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                 <h3 className="text-xl mb-4">Weekly Appointments</h3>
                 <ResponsiveContainer width="100%" height={300}>
                     <BarChart data={appointmentData}>

@@ -7,7 +7,7 @@ import WeeklyAppointments from './WeeklyAppointments';
 
 const Dashboard = () => {
     return (
-        <section className='h-screen pt-5 mr-2'>
+        <section className='pt-5 mr-2'>
             <div className='flex items-center justify-between shadow-md rounded-md p-3 mb-3'>
                 <div>
                     <p className='text-2xl'>Dashboard</p>

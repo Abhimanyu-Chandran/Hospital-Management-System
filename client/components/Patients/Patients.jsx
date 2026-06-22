@@ -293,7 +293,7 @@ const Patients = () => {
           <button
             onClick={handleAddPatient}
             disabled={loading}
-            className='shadow-md rounded-md border-2 rounded-md px-4 py-2 m-2 flex text-blue-500 hover:bg-blue-500 cursor-pointer hover:text-white active:bg-white active:text-blue-500 disabled:opacity-50'
+            className='shadow-md rounded-md border-2 rounded-md px-4 py-2 m-2 flex bg-linear-to-t from-sky-500 to-indigo-500 cursor-pointer disabled:opacity-50 text-white'
           >
             <Plus className='w-4 h-6' />
             &nbsp;
@@ -365,7 +365,7 @@ const Patients = () => {
                   <tr key={patient.id} className='hover:bg-gray-50 transition-colors'>
                     <td className='px-6 py-4'>
                       <div>
-                        <div className='text-gray-900'>{patient.name}</div>
+                        <div className='text-gray-900 font-semibold text-sm'>{patient.name}</div>
                         <div className='text-sm text-gray-500'>{patient.id}</div>
                       </div>
                     </td>
@@ -435,7 +435,7 @@ const Patients = () => {
               <button
                 onClick={handleCloseModal}
                 disabled={submitting}
-                className='text-gray-500 hover:text-gray-700 disabled:opacity-50'
+                className='text-gray-500 hover:text-gray-700 disabled:opacity-50 cursor-pointer'
               >
                 <X className='w-5 h-5' />
               </button>
