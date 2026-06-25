@@ -4,14 +4,11 @@ const medicalRecordSchema = new Schema({
     patientId: { type: Types.ObjectId, ref: 'Patient', required: true },
     doctorId: { type: Types.ObjectId, ref: 'Doctor', required: true },
     date: { type: Date, required: true },
-
-    // Explicit type for the medical record document
     recordType: {
         type: String,
         enum: ['Consultation', 'Lab Results', 'Imaging', 'Surgery Report', 'Prescription'],
         required: true,
     },
-
     diagnosis: { type: String, required: true },
     treatment: { type: String, required: true },
     prescription: [{

@@ -239,8 +239,8 @@ const Appointments = () => {
 	};
 
 	return (
-		<section className='pt-5'>
-			<div className='flex items-center justify-between shadow-md rounded-md p-3 bg-white'>
+		<section className='pt-5 p-5'>
+			<div className='flex items-center justify-between shadow-sm hover:shadow-md transition-shadow rounded-lg p-3 bg-white'>
 				<div>
 					<p className='text-2xl font-medium text-gray-800'>Appointments</p>
 					<p className='text-gray-500'>Schedule and manage appointments</p>

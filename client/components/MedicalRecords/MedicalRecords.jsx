@@ -359,16 +359,16 @@ const MedicalRecords = () => {
 	}
 
 	return (
-		<section className='pt-5 p-2'>
-			<div className='flex items-center justify-between shadow-md rounded-md p-3'>
+		<section className='pt-5 p-5'>
+			<div className='flex bg-white items-center justify-between shadow-sm hover:shadow-md rounded-md p-3'>
 				<div>
 					<p className='text-2xl font-medium text-gray-800'>Medical Records</p>
-					<p>Manage patient medical records and documents</p>
+					<p className='text-gray-500'>Manage patient medical records and documents</p>
 				</div>
 				<div className='flex'>
 					<button
 						onClick={handleAdd}
-						className='shadow-md rounded-md border-2 rounded-md px-4 py-2 m-2 flex bg-linear-to-t from-sky-500 to-indigo-500 text-white cursor-pointer disabled:opacity-50'
+						className='shadow-md rounded-md border-2 rounded-md px-4 py-2 m-2 flex border-blue-500 bg-linear-to-t from-sky-500 to-indigo-500 text-white cursor-pointer disabled:opacity-50'
 						disabled={loading}
 					>
 						<Plus className='w-4 h-6' />
@@ -408,12 +408,12 @@ const MedicalRecords = () => {
 
 				<div className='mb-6'>
 					<label className='text-sm font-medium text-gray-700 mb-2 block'>Filter by type:</label>
-					<div className='flex space-x-2'>
+					<div className='flex space-x-2 border-blue-500'>
 						{['All', 'Consultation', 'Lab Results', 'Surgery Report', 'Prescription', 'Imaging'].map((type) => (
 							<button
 								key={type}
 								onClick={() => setFilterType(type)}
-								className={`px-4 py-2 rounded-md font-medium bg-linear-to-t from-sky-500 to-indigo-500 text-white cursor-pointer transition-colors ${filterType === type}`}
+								className={`px-4 py-2 rounded-md font-medium bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 text-white cursor-pointer transition-colors ${filterType === type}`}
 							>
 								{type}
 							</button>
@@ -469,7 +469,7 @@ const MedicalRecords = () => {
 									<div className='flex space-x-3'>
 										<button
 											onClick={() => handleEdit(record)}
-											className='flex-1 px-4 py-2 cursor-pointer border border-blue-500 rounded-md bg-linear-to-t from-sky-500 to-indigo-500 text-white transition-colors flex items-center justify-center'
+											className='flex-1 px-4 py-2 cursor-pointer border border-blue-500 rounded-md bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 text-white transition-colors flex items-center justify-center'
 										>
 											<Edit className='w-4 h-4 mr-2' />
 											Edit

@@ -283,17 +283,17 @@ const Patients = () => {
   }
 
   return (
-    <section className='pt-5'>
-      <div className='flex items-center justify-between shadow-md rounded-md p-3'>
+    <section className='pt-5 p-5'>
+      <div className='flex items-center justify-between shadow-sm hover:shadow-md transition-shadow bg-white rounded-md p-3'>
         <div>
-          <p className='text-2xl'>Patients</p>
-          <p>Manage patient records and information</p>
+          <p className='text-2xl font-semibold'>Patients</p>
+          <p className='text-gray-500'>Manage patient records and information</p>
         </div>
         <div className='flex'>
           <button
             onClick={handleAddPatient}
             disabled={loading}
-            className='shadow-md rounded-md border-2 rounded-md px-4 py-2 m-2 flex bg-linear-to-t from-sky-500 to-indigo-500 cursor-pointer disabled:opacity-50 text-white'
+            className='shadow-md rounded-md border-2 rounded-md px-4 py-2 m-2 flex bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 cursor-pointer disabled:opacity-50 text-white'
           >
             <Plus className='w-4 h-6' />
             &nbsp;
@@ -582,14 +582,14 @@ const Patients = () => {
                   type='button'
                   onClick={handleCloseModal}
                   disabled={submitting}
-                  className='px-4 py-2 text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300 transition-colors disabled:opacity-50'
+                  className='px-4 py-2 text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300 transition-colors disabled:opacity-50 cursor-pointer'
                 >
                   Cancel
                 </button>
                 <button
                   type='submit'
                   disabled={submitting}
-                  className='px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors disabled:opacity-50'
+                  className='px-4 py-2 bg-blue-500 text-white rounded-lg bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 cursor-pointer transition-colors disabled:opacity-50'
                 >
                   {submitting ? 'Saving...' : editingPatient ? 'Update Patient' : 'Add Patient'}
                 </button>

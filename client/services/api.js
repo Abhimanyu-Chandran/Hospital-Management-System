@@ -14,3 +14,11 @@ export const getHeaders = () => {
     const headers = { 'Content-Type': 'application/json' };
     return headers;
 };
+
+// For authenticated requests
+export const getAuthHeaders = (token) => {
+    return {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+    };
+};

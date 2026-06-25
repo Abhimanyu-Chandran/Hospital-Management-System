@@ -7,11 +7,11 @@ import WeeklyAppointments from './WeeklyAppointments';
 
 const Dashboard = () => {
     return (
-        <section className='pt-5 mr-2'>
-            <div className='flex items-center justify-between shadow-md rounded-md p-3 mb-3'>
+        <section className='pt-5 p-5'>
+            <div className='flex items-center justify-between shadow-sm hover:shadow-md transition-shadow rounded-lg bg-white p-3 mb-3'>
                 <div>
-                    <p className='text-2xl'>Dashboard</p>
-                    <p>Review patient growth and appointments</p>
+                    <p className='text-2xl font-semibold'>Dashboard</p>
+                    <p className='text-gray-500'>Review patient growth and appointments</p>
                 </div>
             </div>
             <DashboardCard />

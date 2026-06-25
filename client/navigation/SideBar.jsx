@@ -14,7 +14,7 @@ const SideBar = ({ isOpen, onToggle }) => {
 				{isOpen && (
 					<>
 						<div>
-							<img src="client/assets/hms-logo.png" alt="hms-logo" className="w-15 h-15" />
+							<img src="client/assets/hms-logo.png" alt="hms-logo" className="w-15 h-15 border border-gray-300 rounded-lg" />
 						</div>
 						<div className="bg-linear-to-t from-sky-500 to-indigo-500 bg-clip-text text-transparent text-3xl font-semibold">
 							HMS
@@ -32,14 +32,14 @@ const SideBar = ({ isOpen, onToggle }) => {
 			<div>
 				<div
 					onClick={() => handleNavigation('/')}
-					className='bg-linear-to-t from-sky-500 to-indigo-500 border-2 rounded-md px-4 py-2 m-2 flex cursor-pointer'
+					className='bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 rounded-md px-4 py-2 m-2 flex cursor-pointer'
 				>
 					<Home className="w-5 h-5" />
 					{isOpen && <button className="pl-3 mr-10 focus-visible:outline-none cursor-pointer">Home</button>}
 				</div>
 				<div
 					onClick={() => handleNavigation('/dashboard')}
-					className='bg-linear-to-t from-sky-500 to-indigo-500 border-2 rounded-md px-4 py-2 m-2 flex cursor-pointer'
+					className='bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 rounded-md px-4 py-2 m-2 flex cursor-pointer'
 				>
 					<LayoutDashboard className="w-5 h-5" />
 					{isOpen && <button className="pl-3 mr-10 focus-visible:outline-none cursor-pointer">Dashboard</button>}
@@ -47,7 +47,7 @@ const SideBar = ({ isOpen, onToggle }) => {
 
 				<div
 					onClick={() => handleNavigation('/patients')}
-					className='bg-linear-to-t from-sky-500 to-indigo-500 border-2 rounded-md px-4 py-2 m-2 flex cursor-pointer'
+					className='bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 rounded-md px-4 py-2 m-2 flex cursor-pointer'
 				>
 					<User className="w-5 h-5" />
 					{isOpen && <button className="pl-3 mr-10 focus-visible:outline-none cursor-pointer">Patients</button>}
@@ -55,7 +55,7 @@ const SideBar = ({ isOpen, onToggle }) => {
 
 				<div
 					onClick={() => handleNavigation('/appointments')}
-					className='bg-linear-to-t from-sky-500 to-indigo-500 border-2 rounded-md px-4 py-2 m-2 flex cursor-pointer'
+					className='bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 rounded-md px-4 py-2 m-2 flex cursor-pointer'
 				>
 					<Calendar className="w-5 h-5" />
 					{isOpen && <button className="pl-3 mr-10 focus-visible:outline-none cursor-pointer">Appointments</button>}
@@ -63,7 +63,7 @@ const SideBar = ({ isOpen, onToggle }) => {
 
 				<div
 					onClick={() => handleNavigation('/doctors')}
-					className='bg-linear-to-t from-sky-500 to-indigo-500 border-2 rounded-md px-4 py-2 m-2 flex cursor-pointer'
+					className='bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 rounded-md px-4 py-2 m-2 flex cursor-pointer'
 				>
 					<CircleUser className="w-5 h-5" />
 					{isOpen && <button className="pl-3 mr-10 focus-visible:outline-none cursor-pointer">Doctors</button>}
@@ -71,7 +71,7 @@ const SideBar = ({ isOpen, onToggle }) => {
 
 				<div
 					onClick={() => handleNavigation('/medical-records')}
-					className='bg-linear-to-t from-sky-500 to-indigo-500 border-2 rounded-md px-4 py-2 m-2 flex cursor-pointer'
+					className='bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 rounded-md px-4 py-2 m-2 flex cursor-pointer'
 				>
 					<FileText className="w-5 h-5" />
 					{isOpen && <button className="pl-3 mr-10 focus-visible:outline-none cursor-pointer">Medical Records</button>}
