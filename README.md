@@ -4,6 +4,7 @@ A full-stack Hospital Management System built with **React (Vite)**, **Express**
 
 ## Screenshots
 ![Login Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/577b0a08188116307a7d79bb0854cc8d36af4730/Screenshots/Login%20Page.png)
+- Login Page
 
 ## Features
 
