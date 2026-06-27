@@ -26,3 +26,6 @@ dist-ssr
 #Environmental Variables
 .env
 *.env
+.env.*
+server/.env*
+client/.env*
