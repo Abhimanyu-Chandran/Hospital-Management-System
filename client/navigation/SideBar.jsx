@@ -14,7 +14,7 @@ const SideBar = ({ isOpen, onToggle }) => {
 				{isOpen && (
 					<>
 						<div>
-							<img src="./client/assets/hms-logo.png" alt="hms-logo" className="w-15 h-15 border border-gray-300 rounded-lg" />
+							<img src="/client/assets/hms-logo.png" alt="HMS logo" className="w-15 h-15 border border-gray-300 rounded-lg" />
 						</div>
 						<div className="bg-linear-to-t from-sky-500 to-indigo-500 bg-clip-text text-transparent text-3xl font-semibold">
 							HMS
