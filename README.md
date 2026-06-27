@@ -7,6 +7,10 @@ A full-stack Hospital Management System built with **React (Vite)**, **Express**
 ![Register Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/48fb2ca82c993f3f29d945f52e645af5dd6549ee/Screenshots/Register%20Page.png)
 ![Home Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/48fb2ca82c993f3f29d945f52e645af5dd6549ee/Screenshots/Home%20Page.png)
 ![Dashboard Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/48fb2ca82c993f3f29d945f52e645af5dd6549ee/Screenshots/Dashboard%20Page.png)
+![Patients Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/e155566b044497b4ec8969db6becab1ead0724f8/Screenshots/Patients%20Page.png)
+![Appointments Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/e155566b044497b4ec8969db6becab1ead0724f8/Screenshots/Appoinments%20Page.png)
+![Doctors Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/e155566b044497b4ec8969db6becab1ead0724f8/Screenshots/Doctors%20Page.png)
+![Medical Records Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/e155566b044497b4ec8969db6becab1ead0724f8/Screenshots/Medical%20Records%20Page.png)
 
 ## Features
 
