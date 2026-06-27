@@ -27,6 +27,17 @@ app.use('/api/appointments', appointmentsRouter);
 app.use('/api/medical-records', medicalRecordsRouter);
 app.use('/api/auth', authRouter);
 
+// SPA fallback (so hard-refresh on /patients, /doctors, etc. still loads the React app)
+// IMPORTANT: keep this after /api/* routes so API calls still return JSON.
+app.use((req, res, next) => {
+    // Only handle non-API GET requests (SPA navigation)
+    if (req.method !== 'GET') return next();
+    if (req.path.startsWith('/api/')) return next();
+
+    // Serve React/Vite index.html for client-side routes.
+    return res.sendFile(new URL('../index.html', import.meta.url).pathname);
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
