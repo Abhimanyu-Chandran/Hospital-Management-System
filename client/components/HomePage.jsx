@@ -11,7 +11,7 @@ const HomePage = () => {
                         <div>
                             <p className="text-sm text-gray-500 pl-19">Care • Coordination • Confidence</p>
                             <div className='flex items-center'>
-                                <img src="public\assets\logo.png" alt="HMS logo" className="w-15 h-15 border border-gray-200 rounded-lg mt-2 mr-4" />
+                                <img src="public/assets/logo.png" alt="HMS logo" className="w-15 h-15 border border-gray-200 rounded-lg mt-2 mr-4" />
                                 <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-1">
                                     Hospital Management System
                                 </h1>
