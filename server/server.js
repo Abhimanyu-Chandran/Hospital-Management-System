@@ -6,7 +6,6 @@ import patientsRouter from './routes/patients.js';
 import doctorsRouter from './routes/doctors.js';
 import appointmentsRouter from './routes/appointments.js';
 import medicalRecordsRouter from './routes/medicalRecords.js';
-import authRouter from './routes/auth.js';
 
 dotenv.config();
 
@@ -25,7 +24,6 @@ app.use('/api/patients', patientsRouter);
 app.use('/api/doctors', doctorsRouter);
 app.use('/api/appointments', appointmentsRouter);
 app.use('/api/medical-records', medicalRecordsRouter);
-app.use('/api/auth', authRouter);
 
 // SPA fallback (so hard-refresh on /patients, /doctors, etc. still loads the React app)
 // IMPORTANT: keep this after /api/* routes so API calls still return JSON.

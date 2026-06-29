@@ -1,17 +1,7 @@
-import React, { useContext } from 'react';
-import AuthContext from '../auth/AuthContext.jsx';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import { User } from 'lucide-react';
 
 const HomePage = () => {
-    const { user, logout } = useContext(AuthContext);
-    const navigate = useNavigate();
-
-    const onLogout = () => {
-        logout();
-        navigate('/login', { replace: true });
-    };
-
     return (
         <section className="flex flex-col min-h-screen">
             {/* Page header */}
@@ -21,7 +11,7 @@ const HomePage = () => {
                         <div>
                             <p className="text-sm text-gray-500 pl-19">Care • Coordination • Confidence</p>
                             <div className='flex items-center'>
-                                <img src="/assets/hms-logo.png" alt="HMS logo" className="w-15 h-15 border border-gray-200 rounded-lg mt-2 mr-4" />
+                                <img src="client/assets/hms-logo.png" alt="HMS logo" className="w-15 h-15 border border-gray-200 rounded-lg mt-2 mr-4" />
                                 <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-1">
                                     Hospital Management System
                                 </h1>
@@ -29,18 +19,6 @@ const HomePage = () => {
                             <p className="text-gray-600 mt-2 pl-19">
                                 Manage appointments, patients, doctors, and medical records—built for real-world workflows.
                             </p>
-                        </div>
-
-                        <div className="flex flex-col items-end gap-2 pt-1">
-                            <p className="text-sm text-gray-600 flex items-center gap-2">
-                                {user ? `Signed in as ${user.name}` : ''}
-                            </p>
-                            <button
-                                onClick={onLogout}
-                                className="bg-red-600 text-white px-4 py-2 rounded-md hover:opacity-50 cursor-pointer transition-colors"
-                            >
-                                Logout
-                            </button>
                         </div>
                     </div>
                 </div>
