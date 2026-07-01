@@ -6,12 +6,12 @@ A full-stack, responsive Hospital Management System built with **React 19**, **V
 
 ## 📸 Screenshots
 
-- **Home Page**: [Home Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/48fb2ca82c993f3f29d945f52e645af5dd6549ee/Screenshots/Home%20Page.png)
-- **Dashboard Page**: [Dashboard Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/48fb2ca82c993f3f29d945f52e645af5dd6549ee/Screenshots/Dashboard%20Page.png)
-- **Patients Page**: [Patients Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/e155566b044497b4ec8969db6becab1ead0724f8/Screenshots/Patients%20Page.png)
-- **Appointments Page**: [Appointments Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/e155566b044497b4ec8969db6becab1ead0724f8/Screenshots/Appoinments%20Page.png)
-- **Doctors Page**: [Doctors Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/e155566b044497b4ec8969db6becab1ead0724f8/Screenshots/Doctors%20Page.png)
-- **Medical Records Page**: [Medical Records Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/e155566b044497b4ec8969db6becab1ead0724f8/Screenshots/Medical%20Records%20Page.png)
+- **Home Page**: [Home Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/2c585eb7aef5003aed11a97ff5f0cf2dd4c8b787/Home%20Page.png)
+- **Dashboard Page**: [Dashboard Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/2c585eb7aef5003aed11a97ff5f0cf2dd4c8b787/Dashboard%20Page.png)
+- **Patients Page**: [Patients Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/2c585eb7aef5003aed11a97ff5f0cf2dd4c8b787/Patients%20Page.png)
+- **Appointments Page**: [Appointments Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/2c585eb7aef5003aed11a97ff5f0cf2dd4c8b787/Appointments%20Page.png)
+- **Doctors Page**: [Doctors Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/2c585eb7aef5003aed11a97ff5f0cf2dd4c8b787/Doctors%20Page.png)
+- **Medical Records Page**: [Medical Records Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/2c585eb7aef5003aed11a97ff5f0cf2dd4c8b787/Medical%20Records%20Page.png)
 
 ---
 
