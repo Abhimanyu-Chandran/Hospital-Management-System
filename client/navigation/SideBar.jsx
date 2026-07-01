@@ -87,7 +87,7 @@ const SideBar = ({ isOpen, onToggle }) => {
 			</div>
 
 			{/* Bottom Profile Section */}
-			<div className="mt-auto p-2 border-t border-white/10 flex flex-col gap-2">
+			<div className="mt-auto h-full p-2 border-t border-white/10 flex flex-col gap-2">
 				{isSignedIn ? (
 					<div className={`flex items-center gap-3 p-2 rounded-md bg-linear-to-t from-sky-500 to-indigo-500 ${isOpen ? 'justify-start px-4' : 'justify-center px-2'}`}>
 						<UserButton afterSignOutUrl="/" />

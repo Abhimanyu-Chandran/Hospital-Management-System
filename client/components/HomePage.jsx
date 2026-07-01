@@ -150,12 +150,26 @@ const HomePage = () => {
                         <p className="font-semibold text-gray-900">HMS</p>
                         <p className="text-sm text-gray-600">Hospital Management System</p>
                     </div>
-                    <div className="text-sm text-gray-600">
-                        Built By Abhimanyu Chandran •
+                    <div className="flex items-center gap-1">
+                        <div className="text-sm text-gray-600">
+                            Built By Abhimanyu Chandran
+                        </div>
+                        <div className='px-2'>
+                            •
+                        </div>
+                        <a href="https://github.com/Abhimanyu-Chandran/Hospital-Management-System" target='_blank'>
+                            <img src="public\assets\github.webp" className="w-9 h-9"></img>
+                        </a>
+                        <div className='pl-2'>
+                            •
+                        </div>
+                        <a href="https://www.linkedin.com/in/abhimanyuchandran/" target='_blank'>
+                            <img src="public\assets\linkedin.jpg" className="w-13 h-13"></img>
+                        </a>
                     </div>
                 </div>
             </footer>
-        </section >
+        </section>
     );
 };
 

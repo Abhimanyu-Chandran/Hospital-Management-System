@@ -1,164 +1,162 @@
-# Hospital Management System (MERN)
+# Hospital Management System (HMS)
 
-A full-stack Hospital Management System built with **React (Vite)**, **Express**, and **MongoDB (Mongoose)**. The app provides JWT-based authentication and CRUD APIs for **Patients**, **Doctors**, **Appointments**, and **Medical Records**.
+A full-stack, responsive Hospital Management System built with **React 19**, **Vite**, **Tailwind CSS v4**, **Express**, and **MongoDB**. The application integrates **Clerk Authentication** for secure frontend route protection, and supports comprehensive CRUD operations for **Patients**, **Doctors**, **Appointments**, and **Medical Records**.
 
-## Screenshots
-![Login Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/577b0a08188116307a7d79bb0854cc8d36af4730/Screenshots/Login%20Page.png)
-![Register Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/48fb2ca82c993f3f29d945f52e645af5dd6549ee/Screenshots/Register%20Page.png)
-![Home Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/48fb2ca82c993f3f29d945f52e645af5dd6549ee/Screenshots/Home%20Page.png)
-![Dashboard Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/48fb2ca82c993f3f29d945f52e645af5dd6549ee/Screenshots/Dashboard%20Page.png)
-![Patients Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/e155566b044497b4ec8969db6becab1ead0724f8/Screenshots/Patients%20Page.png)
-![Appointments Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/e155566b044497b4ec8969db6becab1ead0724f8/Screenshots/Appoinments%20Page.png)
-![Doctors Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/e155566b044497b4ec8969db6becab1ead0724f8/Screenshots/Doctors%20Page.png)
-![Medical Records Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/e155566b044497b4ec8969db6becab1ead0724f8/Screenshots/Medical%20Records%20Page.png)
+---
 
-## Features
+## 📸 Screenshots
 
-- **Authentication (JWT)**
-  - Register
-  - Login
-  - Auth-protected routes (client-side)
-  - `/api/auth/me` to fetch current user
-- **Dashboard** (protected)
-- **Patients CRUD**
-  - List all patients
-  - View single patient
-  - Create, update, delete patient
-- **Doctors CRUD**
-  - List all doctors
-  - View single doctor
-  - Create, update, delete doctor
-- **Appointments CRUD**
-  - List all appointments
-  - View single appointment
-  - Create, update, delete appointment
-- **Medical Records CRUD**
-  - List all medical records (with populated patient/doctor details)
-  - View single medical record (with populated patient/doctor details)
-  - Create, update, delete medical record
+- **Home Page**: [Home Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/48fb2ca82c993f3f29d945f52e645af5dd6549ee/Screenshots/Home%20Page.png)
+- **Dashboard Page**: [Dashboard Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/48fb2ca82c993f3f29d945f52e645af5dd6549ee/Screenshots/Dashboard%20Page.png)
+- **Patients Page**: [Patients Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/e155566b044497b4ec8969db6becab1ead0724f8/Screenshots/Patients%20Page.png)
+- **Appointments Page**: [Appointments Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/e155566b044497b4ec8969db6becab1ead0724f8/Screenshots/Appoinments%20Page.png)
+- **Doctors Page**: [Doctors Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/e155566b044497b4ec8969db6becab1ead0724f8/Screenshots/Doctors%20Page.png)
+- **Medical Records Page**: [Medical Records Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/e155566b044497b4ec8969db6becab1ead0724f8/Screenshots/Medical%20Records%20Page.png)
 
-## Tech Stack
+---
 
-- **Frontend**: React 19, React Router DOM, Tailwind CSS, Recharts
-- **Backend**: Node.js, Express, Mongoose, JSON Web Tokens (JWT), bcryptjs
-- **Database**: MongoDB
+## 🚀 Key Features
 
-## Project Structure
+### 🔐 Clerk Authentication Process
+- **Provider Setup**: Instantiated in [main.jsx](file:///e:/Additional%20Softwares/VS%20Codes/Hospital%20Management%20System/client/main.jsx) by wrapping the application within the `<ClerkProvider>` component and loading the public publishable key via `import.meta.env.VITE_CLERK_PUBLISHABLE_KEY`.
+- **Pre-Built UI Components**: Standardized login and signup forms are rendered in [Login.jsx](file:///e:/Additional%20Softwares/VS%20Codes/Hospital%20Management%20System/client/auth/Login.jsx) and [Signup.jsx](file:///e:/Additional%20Softwares/VS%20Codes/Hospital%20Management%20System/client/auth/Signup.jsx) via Clerk's `<SignIn>` and `<SignUp>` components, styled inside custom gradient containers.
+- **Route Guarding & Access Control**: 
+  - Admin portals and management pages are wrapped in a custom `<ProtectedRoute>` component in [App.jsx](file:///e:/Additional%20Softwares/VS%20Codes/Hospital%20Management%20System/client/App.jsx) that validates `isSignedIn` and `isLoaded` using the `useAuth()` hook. Unauthenticated users are redirected to `/login`.
+  - Authentication routes (`/login` and `/signup`) are wrapped in `<AuthRoute>` to redirect active user sessions automatically to `/dashboard`.
+- **Dynamic Identity Integration**:
+  - The [SideBar.jsx](file:///e:/Additional%20Softwares/VS%20Codes/Hospital%20Management%20System/client/navigation/SideBar.jsx) renders user profiles using the `useUser()` hook to retrieve email addresses, avatars, and names dynamically.
+  - The `<UserButton>` component is embedded in the Sidebar and [HomePage.jsx](file:///e:/Additional%20Softwares/VS%20Codes/Hospital%20Management%20System/client/components/HomePage.jsx) header to facilitate instant profile customization and secure logouts.
+- **Bypassed Backend Session Management**: Custom JWT token management (cookies/local storage/server verify routes) has been removed in favor of Clerk's secure front-end session handling.
 
-- `client/` – React application
-- `server/` – Express API + MongoDB connection
-- `index.html` – Vite entry HTML
+### 📊 Interactive Admin Dashboard
+- **Summary Metrics**: Instantly shows hospital stats (Total Patients, Doctors, Appointments, Medical Records) inside animated [DashboardCard.jsx](file:///e:/Additional%20Softwares/VS%20Codes/Hospital%20Management%20System/client/components/Dashboard/DashboardCard.jsx) widgets.
+- **Weekly Appointments Trend**: Line charts in [WeeklyAppointments.jsx](file:///e:/Additional%20Softwares/VS%20Codes/Hospital%20Management%20System/client/components/Dashboard/WeeklyAppointments.jsx) powered by `Recharts` to monitor daily booking volumes.
+- **Patient Registration Growth**: Bar graphs in [PatientsGrowth.jsx](file:///e:/Additional%20Softwares/VS%20Codes/Hospital%20Management%20System/client/components/Dashboard/PatientsGrowth.jsx) powered by `Recharts` representing system growth.
+- **Recent Registrations table**: Provides quick access to scheduling lists in [RecentAppointments.jsx](file:///e:/Additional%20Softwares/VS%20Codes/Hospital%20Management%20System/client/components/Dashboard/RecentAppointments.jsx).
 
-## Getting Started
+### 🏥 Full CRUD Management
+- **Patients**: Custom registration, contact details, filters, and modal-based addition/editing.
+- **Doctors**: Manage staff data, departments, specialties, and contact records.
+- **Appointments**: Form scheduling with doctor availability, patient association, and status updates (Scheduled, Completed, Cancelled).
+- **Medical Records**: Complex record documentation. The backend automatically populates nested patient and doctor references so complete details display cleanly.
 
-### Prerequisites
+---
 
-- Node.js (LTS recommended)
-- MongoDB (local or Atlas)
+## 🛠️ Tech Stack
 
-### Environment Variables
+- **Frontend**: React 19, Vite, React Router DOM v7, Tailwind CSS v4, Recharts, Lucide React, `@clerk/react`.
+- **Backend**: Node.js, Express 5, Mongoose.
+- **Database**: MongoDB.
 
-Create a `.env` file in the `server/` directory with:
+---
 
+## 📂 Project Structure
+
+- `client/` – React/Vite source components and API services.
+- `server/` – Express API configurations, MongoDB connection, schema models, and backend controllers.
+- `index.html` – Root-level Vite entry page.
+- `package.json` – Frontend client dependencies and scripts.
+- `server/package.json` – Backend Express server dependencies and start scripts.
+
+---
+
+## ⚙️ Environment Configuration
+
+Set up environment variables for both the client (project root) and the server (`/server`).
+
+### 1) Client Environment (Project Root)
+Create a `.env` file in the **root** folder:
 ```env
-PORT=5000
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
+VITE_CLERK_PUBLISHABLE_KEY=pk_test_...
 ```
 
-Notes:
-- If `JWT_SECRET` is not provided, the server falls back to `dev-secret`.
+### 2) Server Environment (`/server`)
+Create a `.env` file inside the `server/` folder:
+```env
+PORT=5000
+MONGODB_URI=mongodb+srv://...
+```
 
-## Running the App Locally
+---
 
-You need to run **both** the client and the server.
+## 🏃 Running the Application Locally
 
-### 1) Server
+You will need to launch both the frontend client and the backend server.
 
+### 1) Start the Backend Server
 From the project root:
-
 ```bash
 cd server
 npm install
 npm run start
 ```
+The server will boot by default on `http://localhost:5000`.
 
-Server listens on `http://localhost:5000` by default.
-
-### 2) Client
-
-From the project root:
-
+### 2) Start the Frontend Client
+From the project root (where Vite is configured):
 ```bash
-cd client
 npm install
 npm run dev
 ```
+Open the Vite development server address (usually `http://localhost:5173`) in your web browser.
 
-Open the URL shown by Vite (typically `http://localhost:5173`).
+---
 
-## API Reference
+## 🔌 API Reference
 
-Base URL (client config):
+**Base URL**: `http://localhost:5000/api`
 
-- `http://localhost:5000/api`
+### Patients Endpoints (`/api/patients`)
+- `GET /` – Get list of all patients.
+- `GET /:id` – Get single patient details.
+- `POST /` – Add a new patient record.
+- `PUT /:id` – Update patient information.
+- `DELETE /:id` – Remove a patient record.
 
-### Auth
+### Doctors Endpoints (`/api/doctors`)
+- `GET /` – Get list of all doctors.
+- `GET /:id` – Get single doctor details.
+- `POST /` – Register a new doctor.
+- `PUT /:id` – Update doctor details.
+- `DELETE /:id` – Remove a doctor.
 
-- `POST /api/auth/register`
-- `POST /api/auth/login`
-- `GET /api/auth/me`
+### Appointments Endpoints (`/api/appointments`)
+- `GET /` – Get list of all appointments.
+- `GET /:id` – Retrieve a specific appointment details.
+- `POST /` – Schedule a new appointment.
+- `PUT /:id` – Reschedule or modify status.
+- `DELETE /:id` – Cancel/Delete an appointment.
 
-### Patients
+### Medical Records Endpoints (`/api/medical-records`)
+- `GET /` – Get all records (populates doctor and patient relations automatically).
+- `GET /:id` – Get single record info.
+- `POST /` – Add a new medical record.
+- `PUT /:id` – Modify record parameters.
+- `DELETE /:id` – Delete a medical record.
 
-- `GET /api/patients`
-- `GET /api/patients/:id`
-- `POST /api/patients`
-- `PUT /api/patients/:id`
-- `DELETE /api/patients/:id`
+---
 
-### Doctors
+## 🧭 Client Routes (UI Navigation)
 
-- `GET /api/doctors`
-- `GET /api/doctors/:id`
-- `POST /api/doctors`
-- `PUT /api/doctors/:id`
-- `DELETE /api/doctors/:id`
+Client routes are handled by React Router DOM. Administrative panels are protected and require a signed-in Clerk account.
 
-### Appointments
+- `/` – **Home Page**: Visual entry page containing HMS summary and login/signup navigation buttons.
+- `/login` – **Login Page**: Renders Clerk's `<SignIn>` form. Redirects active sessions to `/dashboard`.
+- `/signup` – **Register Page**: Renders Clerk's `<SignUp>` form. Redirects active sessions to `/dashboard`.
+- `/dashboard` – **Dashboard**: Main metrics overview and Recharts statistics (Protected).
+- `/patients` – **Patients**: View, register, and update patient forms (Protected).
+- `/appointments` – **Appointments**: Schedule and status-track bookings (Protected).
+- `/doctors` – **Doctors**: Staff register and department assignments (Protected).
+- `/medical-records` – **Medical Records**: Document patient diagnostics and prescriptions (Protected).
 
-- `GET /api/appointments`
-- `GET /api/appointments/:id`
-- `POST /api/appointments`
-- `PUT /api/appointments/:id`
-- `DELETE /api/appointments/:id`
+---
 
-### Medical Records
+## 📝 Development Notes
+- **SPA Fallback Routing**: The backend server is configured to serve the root `index.html` file for non-API GET requests, allowing deep links (like `/patients` or `/dashboard`) to be refreshed directly in the browser without 404 errors.
+- **Session Security**: Authentication cookies and tokens are handled entirely by Clerk's secure SDK on the frontend, eliminating manual storage handling in the client codebase.
 
-- `GET /api/medical-records` (populates `patientId` and `doctorId`)
-- `GET /api/medical-records/:id` (populates `patientId` and `doctorId`)
-- `POST /api/medical-records`
-- `PUT /api/medical-records/:id`
-- `DELETE /api/medical-records/:id`
+---
 
-## Client Routes (UI)
+## 📄 License
 
-Protected routes redirect to `/login` if the user is not authenticated.
-
-- `/` – Home (protected)
-- `/register` – Register
-- `/login` – Login
-- `/dashboard` – Dashboard (protected)
-- `/patients` – Patients (protected)
-- `/appointments` – Appointments (protected)
-- `/doctors` – Doctors (protected)
-- `/medical-records` – Medical Records (protected)
-
-## Notes
-
-- The server includes an SPA fallback for non-API GET requests so client-side routes can load correctly.
-- JWT token is stored in the browser `localStorage` as `token`.
-
-## License
-
-MIT
+This project is licensed under the [MIT License](file:///e:/Additional%20Softwares/VS%20Codes/Hospital%20Management%20System/LICENSE).
