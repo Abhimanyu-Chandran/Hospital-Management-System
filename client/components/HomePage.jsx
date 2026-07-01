@@ -158,13 +158,13 @@ const HomePage = () => {
                             •
                         </div>
                         <a href="https://github.com/Abhimanyu-Chandran/Hospital-Management-System" target='_blank'>
-                            <img src="public\assets\github.webp" className="w-9 h-9"></img>
+                            <img src="/assets/github.webp" className="w-9 h-9"></img>
                         </a>
                         <div className='pl-2'>
                             •
                         </div>
                         <a href="https://www.linkedin.com/in/abhimanyuchandran/" target='_blank'>
-                            <img src="public\assets\linkedin.jpg" className="w-13 h-13"></img>
+                            <img src="/assets/linkedin.jpg" className="w-13 h-13"></img>
                         </a>
                     </div>
                 </div>
