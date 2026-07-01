@@ -7,7 +7,7 @@ A full-stack, responsive Hospital Management System built with **React 19**, **V
 ## 📸 Screenshots
 
 - **Home Page**: [Home Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/2c585eb7aef5003aed11a97ff5f0cf2dd4c8b787/Home%20Page.png)
-- **Dashboard Page**: [Dashboard Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/2c585eb7aef5003aed11a97ff5f0cf2dd4c8b787/Dashboard%20Page.png)
+- **Dashboard Page**: [Dashboard Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/c62337a03856cfb561512cfe1b87431bec8f63ad/Screenshots/Dashboard%20Page.png)
 - **Patients Page**: [Patients Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/2c585eb7aef5003aed11a97ff5f0cf2dd4c8b787/Patients%20Page.png)
 - **Appointments Page**: [Appointments Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/2c585eb7aef5003aed11a97ff5f0cf2dd4c8b787/Appointments%20Page.png)
 - **Doctors Page**: [Doctors Page](https://github.com/Abhimanyu-Chandran/Hospital-Management-System/blob/2c585eb7aef5003aed11a97ff5f0cf2dd4c8b787/Doctors%20Page.png)
