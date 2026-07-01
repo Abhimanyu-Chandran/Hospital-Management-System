@@ -1,24 +1,55 @@
-import React from 'react';
-import { User } from 'lucide-react';
+import { LogIn, UserPlus, LayoutDashboard, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useAuth, UserButton } from '@clerk/react';
 
 const HomePage = () => {
+    const { isSignedIn, isLoaded } = useAuth();
+
     return (
         <section className="flex flex-col min-h-screen">
             {/* Page header */}
-            <header className="bg-white backdrop-blur border-b border-gray-200 px-5 mx-5 mt-5 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                <div className="max-w-6xl mx-auto px-4 py-8">
-                    <div className="flex items-start justify-between gap-4">
+            <header className="bg-white/90 backdrop-blur-md border border-gray-200 px-5 mx-5 mt-5 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                <div className="max-w-7xl mx-auto py-6">
+                    <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-6">
                         <div>
-                            <p className="text-sm text-gray-500 pl-19">Care • Coordination • Confidence</p>
-                            <div className='flex items-center'>
-                                <img src="/assets/logo.png" alt="HMS logo" className="w-15 h-15 border border-gray-200 rounded-lg mt-2 mr-4" />
-                                <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-1">
+                            <p className="text-xs font-semibold tracking-wider text-sky-600 uppercase pl-0 sm:pl-19">Care • Coordination • Confidence</p>
+                            <div className='flex flex-col sm:flex-row items-center mt-2'>
+                                <img src="/assets/logo.png" alt="HMS logo" className="w-15 h-15 border border-gray-200 rounded-lg mr-0 sm:mr-4 mb-2 sm:mb-0" />
+                                <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 text-center sm:text-left">
                                     Hospital Management System
                                 </h1>
                             </div>
-                            <p className="text-gray-600 mt-2 pl-19">
+                            <p className="text-gray-600 mt-2 text-sm text-center sm:text-left sm:pl-19">
                                 Manage appointments, patients, doctors, and medical records—built for real-world workflows.
                             </p>
+                        </div>
+
+                        {/* Auth actions inside header */}
+                        <div className="flex items-center gap-3 self-center sm:self-start sm:mt-8">
+                            {isLoaded && (
+                                isSignedIn ? (
+                                    <>
+                                        <Link to="/dashboard" className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-linear-to-t from-sky-500 to-indigo-500 rounded-lg shadow-md hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                                            <LayoutDashboard className="w-4 h-4" />
+                                            Go to Dashboard
+                                        </Link>
+                                        <div className="border-l border-gray-200 pl-3 h-8 flex items-center">
+                                            <UserButton afterSignOutUrl="/" />
+                                        </div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Link to="/login" className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 hover:text-sky-600 transition-all">
+                                            <LogIn className="w-4 h-4" />
+                                            Login
+                                        </Link>
+                                        <Link to="/signup" className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-linear-to-t from-sky-500 to-indigo-500 rounded-lg shadow-md hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                                            <UserPlus className="w-4 h-4" />
+                                            Signup
+                                        </Link>
+                                    </>
+                                )
+                            )}
                         </div>
                     </div>
                 </div>
@@ -54,10 +85,27 @@ const HomePage = () => {
                                     <p className="font-semibold text-gray-900">At-a-glance stats</p>
                                 </div>
                             </div>
+
+                            {/* Hero Actions */}
+                            <div className="mt-8 flex flex-col sm:flex-row gap-4 border-t border-gray-100 pt-6">
+                                {isLoaded && (
+                                    !isSignedIn && (
+                                        <>
+                                            <Link to="/signup" className="flex items-center justify-center gap-2 px-6 py-3 font-semibold text-white bg-linear-to-t from-sky-500 to-indigo-500 rounded-lg shadow-lg hover:opacity-95 hover:scale-[1.02] transition-all">
+                                                Get Started
+                                                <ArrowRight className="w-5 h-5" />
+                                            </Link>
+                                            <Link to="/login" className="flex items-center justify-center gap-2 px-6 py-3 font-semibold text-gray-700 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-50 transition-all">
+                                                Sign In
+                                            </Link>
+                                        </>
+                                    )
+                                )}
+                            </div>
                         </div>
 
-                        <div className="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow p-6 sm:p-8">
-                            <div className="rounded-xl p-5 border border-gray-200">
+                        <div className="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow p-6 sm:p-11">
+                            <div className="rounded-xl p-5">
                                 <p className="text-sm opacity-90">Smart system overview</p>
                                 <h3 className="text-xl font-semibold mt-2">Your command center</h3>
                                 <ul className="mt-4 space-y-3">
@@ -97,7 +145,7 @@ const HomePage = () => {
 
             {/* Page footer */}
             <footer className="border border-gray-200 bg-white mb-5 mx-5 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                <div className="max-w-6xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                     <div>
                         <p className="font-semibold text-gray-900">HMS</p>
                         <p className="text-sm text-gray-600">Hospital Management System</p>

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
 	Plus,
 	Search,
@@ -105,8 +105,9 @@ const MedicalRecords = () => {
 		}
 	}
 
-	const fetchAll = async () => {
+	const fetchAll = useCallback(async () => {
 		try {
+			await Promise.resolve()
 			setLoading(true)
 			setError(null)
 
@@ -163,11 +164,14 @@ const MedicalRecords = () => {
 		} finally {
 			setLoading(false)
 		}
-	}
+	}, [])
 
 	useEffect(() => {
-		fetchAll()
-	}, [])
+		const timer = setTimeout(() => {
+			fetchAll()
+		}, 0)
+		return () => clearTimeout(timer)
+	}, [fetchAll])
 
 	const filteredRecords = useMemo(() => {
 		let list = records
@@ -360,19 +364,19 @@ const MedicalRecords = () => {
 
 	return (
 		<section className='pt-5 p-5'>
-			<div className='flex bg-white items-center justify-between shadow-sm hover:shadow-md rounded-md p-3'>
+			<div className='flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm hover:shadow-md transition-all duration-300 bg-white rounded-xl p-6 mb-6'>
 				<div>
-					<p className='text-2xl font-medium text-gray-800'>Medical Records</p>
-					<p className='text-gray-500'>Manage patient medical records and documents</p>
+					<h1 className='text-3xl font-extrabold text-gray-900'>Medical Records</h1>
+					<p className='text-gray-500 mt-1 text-sm'>Manage patient medical records and documents</p>
 				</div>
-				<div className='flex'>
+				<div>
 					<button
 						onClick={handleAdd}
-						className='shadow-md rounded-md border-2 rounded-md px-4 py-2 m-2 flex border-blue-500 bg-linear-to-t from-sky-500 to-indigo-500 text-white cursor-pointer disabled:opacity-50'
+						className='flex items-center justify-center gap-2 px-5 py-3 font-semibold text-white bg-linear-to-t from-sky-500 to-indigo-500 rounded-lg shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer disabled:opacity-50'
 						disabled={loading}
 					>
-						<Plus className='w-4 h-6' />
-						&nbsp;New Record
+						<Plus className='w-5 h-5' />
+						New Record
 					</button>
 				</div>
 			</div>
@@ -394,12 +398,12 @@ const MedicalRecords = () => {
 				</div>
 			)}
 
-			<div className='bg-white p-4 rounded-lg shadow p-5 my-5'>
+			<div className='bg-white rounded-lg shadow p-5 my-5'>
 				<div className='relative mb-6'>
 					<Search className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5' />
 					<input
 						type='text'
-						placeholder='Search by patient name, diagnosis, or doctor...'
+						placeholder='          Search by patient name, diagnosis, or doctor...'
 						className='w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
 						value={searchQuery}
 						onChange={(e) => setSearchQuery(e.target.value)}

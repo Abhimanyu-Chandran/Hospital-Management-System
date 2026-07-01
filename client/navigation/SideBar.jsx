@@ -1,8 +1,11 @@
-import { Calendar, CircleUser, FileText, Hospital, LayoutDashboard, User, X, Menu, Home } from "lucide-react"
+import { Calendar, CircleUser, FileText, LayoutDashboard, User, X, Menu, Home } from "lucide-react"
 import { useNavigate } from 'react-router-dom'
+import { useAuth, UserButton, useUser } from '@clerk/react'
 
 const SideBar = ({ isOpen, onToggle }) => {
 	const navigate = useNavigate();
+	const { isSignedIn } = useAuth();
+	const { user } = useUser();
 
 	const handleNavigation = (path) => {
 		navigate(path);
@@ -32,50 +35,80 @@ const SideBar = ({ isOpen, onToggle }) => {
 			<div>
 				<div
 					onClick={() => handleNavigation('/')}
-					className='bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 rounded-md px-4 py-2 m-2 flex cursor-pointer'
+					className='bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 rounded-md px-5 py-2 m-2 flex cursor-pointer'
 				>
 					<Home className="w-5 h-5" />
 					{isOpen && <button className="pl-3 mr-10 focus-visible:outline-none cursor-pointer">Home</button>}
 				</div>
-				<div
-					onClick={() => handleNavigation('/dashboard')}
-					className='bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 rounded-md px-4 py-2 m-2 flex cursor-pointer'
-				>
-					<LayoutDashboard className="w-5 h-5" />
-					{isOpen && <button className="pl-3 mr-10 focus-visible:outline-none cursor-pointer">Dashboard</button>}
-				</div>
 
-				<div
-					onClick={() => handleNavigation('/patients')}
-					className='bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 rounded-md px-4 py-2 m-2 flex cursor-pointer'
-				>
-					<User className="w-5 h-5" />
-					{isOpen && <button className="pl-3 mr-10 focus-visible:outline-none cursor-pointer">Patients</button>}
-				</div>
+				{isSignedIn && (
+					<>
+						<div
+							onClick={() => handleNavigation('/dashboard')}
+							className='bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 rounded-md px-5 py-2 m-2 flex cursor-pointer'
+						>
+							<LayoutDashboard className="w-5 h-5" />
+							{isOpen && <button className="pl-3 mr-10 focus-visible:outline-none cursor-pointer">Dashboard</button>}
+						</div>
 
-				<div
-					onClick={() => handleNavigation('/appointments')}
-					className='bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 rounded-md px-4 py-2 m-2 flex cursor-pointer'
-				>
-					<Calendar className="w-5 h-5" />
-					{isOpen && <button className="pl-3 mr-10 focus-visible:outline-none cursor-pointer">Appointments</button>}
-				</div>
+						<div
+							onClick={() => handleNavigation('/patients')}
+							className='bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 rounded-md px-5 py-2 m-2 flex cursor-pointer'
+						>
+							<User className="w-5 h-5" />
+							{isOpen && <button className="pl-3 mr-10 focus-visible:outline-none cursor-pointer">Patients</button>}
+						</div>
 
-				<div
-					onClick={() => handleNavigation('/doctors')}
-					className='bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 rounded-md px-4 py-2 m-2 flex cursor-pointer'
-				>
-					<CircleUser className="w-5 h-5" />
-					{isOpen && <button className="pl-3 mr-10 focus-visible:outline-none cursor-pointer">Doctors</button>}
-				</div>
+						<div
+							onClick={() => handleNavigation('/appointments')}
+							className='bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 rounded-md px-5 py-2 m-2 flex cursor-pointer'
+						>
+							<Calendar className="w-5 h-5" />
+							{isOpen && <button className="pl-3 mr-10 focus-visible:outline-none cursor-pointer">Appointments</button>}
+						</div>
 
-				<div
-					onClick={() => handleNavigation('/medical-records')}
-					className='bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 rounded-md px-4 py-2 m-2 flex cursor-pointer'
-				>
-					<FileText className="w-5 h-5" />
-					{isOpen && <button className="pl-3 mr-10 focus-visible:outline-none cursor-pointer">Medical Records</button>}
-				</div>
+						<div
+							onClick={() => handleNavigation('/doctors')}
+							className='bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 rounded-md px-5 py-2 m-2 flex cursor-pointer'
+						>
+							<CircleUser className="w-5 h-5" />
+							{isOpen && <button className="pl-3 mr-10 focus-visible:outline-none cursor-pointer">Doctors</button>}
+						</div>
+
+						<div
+							onClick={() => handleNavigation('/medical-records')}
+							className='bg-linear-to-t from-sky-500 to-indigo-500 border-blue-500 rounded-md px-5 py-2 m-2 flex cursor-pointer'
+						>
+							<FileText className="w-5 h-5" />
+							{isOpen && <button className="pl-3 mr-10 focus-visible:outline-none cursor-pointer">Medical Records</button>}
+						</div>
+					</>
+				)}
+			</div>
+
+			{/* Bottom Profile Section */}
+			<div className="mt-auto p-2 border-t border-white/10 flex flex-col gap-2">
+				{isSignedIn ? (
+					<div className={`flex items-center gap-3 p-2 rounded-md bg-linear-to-t from-sky-500 to-indigo-500 ${isOpen ? 'justify-start px-4' : 'justify-center px-2'}`}>
+						<UserButton afterSignOutUrl="/" />
+						{isOpen && (
+							<div className="flex flex-col min-w-0 text-white">
+								<p className="text-xs font-semibold truncate leading-none mb-1">
+									{user?.fullName || user?.primaryEmailAddress?.emailAddress}
+								</p>
+								<p className="text-[10px] text-white/70 font-medium leading-none">Logged In</p>
+							</div>
+						)}
+					</div>
+				) : (
+					<div
+						onClick={() => handleNavigation('/login')}
+						className={`flex items-center gap-3 cursor-pointer p-2 rounded-md bg-linear-to-t from-sky-500 to-indigo-500 text-white hover:opacity-90 transition-all ${isOpen ? 'justify-start px-4' : 'justify-center px-2'}`}
+					>
+						<CircleUser className="w-5 h-5 text-white" />
+						{isOpen && <span className="text-sm font-medium">Sign In</span>}
+					</div>
+				)}
 			</div>
 
 		</section >

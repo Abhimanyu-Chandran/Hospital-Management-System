@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Edit, Plus, Search, Trash2, X } from 'lucide-react';
 import { appointmentsAPI } from '../../services/appointmentsAPI.js';
 
@@ -41,10 +41,6 @@ const Appointments = () => {
 		setTimeout(() => setToast(null), 4000);
 	};
 
-	useEffect(() => {
-		fetchAppointments();
-	}, []);
-
 	const fetchAppointments = async () => {
 		try {
 			setLoading(true);
@@ -75,6 +71,13 @@ const Appointments = () => {
 			setLoading(false);
 		}
 	};
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			fetchAppointments();
+		}, 0);
+		return () => clearTimeout(timer);
+	}, []);
 
 	const filteredAppointments = useMemo(() => {
 		let filtered = appointments;
@@ -240,17 +243,17 @@ const Appointments = () => {
 
 	return (
 		<section className='pt-5 p-5'>
-			<div className='flex items-center justify-between shadow-sm hover:shadow-md transition-shadow rounded-lg p-3 bg-white'>
+			<div className='flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm hover:shadow-md transition-all duration-300 rounded-xl p-6 bg-white mb-6'>
 				<div>
-					<p className='text-2xl font-medium text-gray-800'>Appointments</p>
-					<p className='text-gray-500'>Schedule and manage appointments</p>
+					<h1 className='text-3xl font-extrabold text-gray-900'>Appointments</h1>
+					<p className='text-gray-500 mt-1 text-sm'>Schedule and manage appointments</p>
 				</div>
 				<button
 					onClick={handleAddAppointment}
 					disabled={loading}
-					className='shadow-md rounded-md border-2 border-blue-500 px-4 py-2 m-2 flex text-white bg-linear-to-t from-sky-500 to-indigo-500 transition-all disabled:opacity-50 font-medium cursor-pointer'
+					className='flex items-center justify-center gap-2 px-5 py-3 font-semibold text-white bg-linear-to-t from-sky-500 to-indigo-500 rounded-lg shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer disabled:opacity-50'
 				>
-					<Plus className='w-4 h-6 mr-1' />
+					<Plus className='w-5 h-5' />
 					Add Appointment
 				</button>
 			</div>
@@ -277,7 +280,7 @@ const Appointments = () => {
 					<Search className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5' />
 					<input
 						type='text'
-						placeholder='Search appointments by patient, doctor, or department...'
+						placeholder='          Search appointments by patient, doctor, or department...'
 						className='w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
 						value={searchQuery}
 						onChange={(e) => setSearchQuery(e.target.value)}

@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import { Plus, Search, Phone, Mail, Activity, Edit, Trash2, X } from 'lucide-react'
+import { useEffect, useMemo, useState } from 'react'
+import { Plus, Search, Phone, Mail, Edit, Trash2, X } from 'lucide-react'
 import { doctorAPI } from '../../services/doctorsAPI.js'
 
 const statusColors = {
@@ -46,11 +46,7 @@ const Doctors = () => {
 		return `${base} bg-white border-gray-300 text-gray-600 hover:bg-gray-50`
 	}
 
-	useEffect(() => {
-		fetchDoctors()
-	}, [])
-
-	const fetchDoctors = async () => {
+	async function fetchDoctors() {
 		try {
 			setLoading(true)
 			setError(null)
@@ -88,6 +84,13 @@ const Doctors = () => {
 			setLoading(false)
 		}
 	}
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			fetchDoctors()
+		}, 0)
+		return () => clearTimeout(timer)
+	}, [])
 
 	const filteredDoctors = useMemo(() => {
 		if (!searchQuery.trim()) return doctors
@@ -280,17 +283,17 @@ const Doctors = () => {
 
 	return (
 		<section className='pt-5 p-5'>
-			<div className='flex items-center justify-between shadow-sm hover:shadow-md transition-shadow rounded-lg p-3 bg-white'>
+			<div className='flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm hover:shadow-md transition-all duration-300 rounded-xl p-6 bg-white mb-6'>
 				<div>
-					<p className='text-2xl font-medium text-gray-800'>Doctors Registry</p>
-					<p className='text-gray-500'>Manage system specialists, profiles, and live schedule options</p>
+					<h1 className='text-3xl font-extrabold text-gray-900'>Doctors Registry</h1>
+					<p className='text-gray-500 mt-1 text-sm'>Manage system specialists, profiles, and live schedule options</p>
 				</div>
 				<button
 					onClick={handleAddDoctor}
 					disabled={loading}
-					className='shadow-md rounded-md border-2 border-blue-500 px-4 py-2 m-2 flex bg-linear-to-t from-sky-500 to-indigo-500 text-white transition-all disabled:opacity-50 font-medium cursor-pointer'
+					className='flex items-center justify-center gap-2 px-5 py-3 font-semibold text-white bg-linear-to-t from-sky-500 to-indigo-500 rounded-lg shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer disabled:opacity-50'
 				>
-					<Plus className='w-4 h-6 mr-1' />
+					<Plus className='w-5 h-5' />
 					Add Doctor
 				</button>
 			</div>
@@ -312,12 +315,12 @@ const Doctors = () => {
 				</div>
 			)}
 
-			<div className='bg-white p-4 rounded-lg shadow my-5'>
+			<div className='bg-white p-5 rounded-lg shadow my-5'>
 				<div className='relative'>
 					<Search className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5' />
 					<input
 						type='text'
-						placeholder='Search specialists by name, specialization, or email...'
+						placeholder='         Search specialists by name, specialization, or email...'
 						className='w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
 						value={searchQuery}
 						onChange={e => setSearchQuery(e.target.value)}
