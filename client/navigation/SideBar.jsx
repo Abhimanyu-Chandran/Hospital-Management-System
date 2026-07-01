@@ -26,7 +26,7 @@ const SideBar = ({ isOpen, onToggle }) => {
 				)}
 				<button
 					onClick={onToggle}
-					className="my-8 ml-1 mr-2 bg-linear-to-t from-sky-500 to-indigo-500 rounded hover:bg-gray-100 focus-visible:outline-none"
+					className="my-8 ml-3 mr-2 bg-linear-to-t from-sky-500 to-indigo-500 rounded hover:bg-gray-100 focus-visible:outline-none"
 				>
 					{isOpen ? <X className="cursor-pointer w-5 h-5" /> : <Menu className="cursor-pointer w-5 h-5" />}
 				</button>

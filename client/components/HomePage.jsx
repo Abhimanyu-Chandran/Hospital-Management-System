@@ -152,7 +152,7 @@ const HomePage = () => {
                     </div>
                     <div className="flex items-center gap-1">
                         <div className="text-sm text-gray-600">
-                            Built By Abhimanyu Chandran
+                            Built by Abhimanyu Chandran
                         </div>
                         <div className='px-2'>
                             •
